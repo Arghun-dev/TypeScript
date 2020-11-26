@@ -472,3 +472,19 @@ The type 'readonly number[]' is 'readonly' and cannot be assigned to the mutable
 In our first example using interfaces, TypeScript lets us pass { size: number; label: string; } to something that only expected a { label: string; }. We also just learned about optional properties, and how they’re useful when describing so-called “option bags”.
 
 However, combining the two naively would allow an error to sneak in. For example, taking our last example using createSquare:
+
+
+**Function Types**
+
+```js
+interface SearchFunc {
+  (source: string, subString: string): boolean
+}
+
+let mySearch: SearchFnc;
+
+mySearch = function (src: string, subString: string): boolean {
+  let result = src.search(sub);
+  return result
+}
+```
