@@ -7,7 +7,7 @@ one of the issues I hit when I created react app using `typescript` is that it d
 
 `ERROR`: **cannot use JSX unless the --JSX flag is provided**
 
-`SOLUTION`: in `tsconfig.json` file change **jsx**
+`SOLUTION`: Well I worked around it by adding "jsx": "react" to tsconfig.json
 
 Error: 
 
