@@ -1,5 +1,12 @@
 # TypeScript
 
+## Benefits
+
+1. Strong Typing
+2. Object-oriented features
+3. Compile-time errors
+4. Great tooling
+
 ## issues
 
 **first issue**
