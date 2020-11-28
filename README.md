@@ -1,5 +1,16 @@
 # TypeScript
 
+## issues
+
+**first issue**
+one of the issues I hit when I created react app using `typescript` is that it does not know `JSX`
+
+`ERROR`: **cannot use JSX unless the --JSX flag is provided**
+
+`SOLUTION`: in `tsconfig.json` file change **jsx**
+
+Error: 
+
 ### Defining Types
 
 For example, to create an object with an inferred type which includes name: string and id: number, you can write:
