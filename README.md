@@ -545,3 +545,14 @@ const result1 = getDisplayName({
 });
 const result2 = getDisplayName({ animalName: "bird" });
 ```
+
+
+### Remove a member of a Union Type
+
+```js
+type Letters = "a" | "b" | "c";
+
+type RemoveC<T> = T extends "c" ? never : T;
+
+type WithoutCLetters = RemoveC<Letters>;
+```
