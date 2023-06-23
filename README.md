@@ -513,6 +513,8 @@ mySearch = function (src: string, subString: string): boolean {
 
 ### When should I use a Generic?
 
+When you start using Generic is that, you truely don't know what type is gonna passed into the function. 
+
 ```js
 interface Animal {
   animalName: string;
