@@ -556,3 +556,34 @@ type RemoveC<T> = T extends "c" ? never : T;
 
 type WithoutCLetters = RemoveC<Letters>;
 ```
+
+
+### Loosing Autocomplete and How to fix it
+
+look at this code below:
+
+```js
+type IconsSize = "sm" | "xs" | string;
+
+const Icon = ({ size }: { size: IconsSize }) => <></>;
+
+export default function App() {
+  return (
+    <div className="App">
+      <h1>Hello CodeSandbox</h1>
+      <h2>Start editing to see some magic happen!</h2>
+      <Icon size='...' />
+    </div>
+  );
+}
+```
+
+in the above code you will lose auto-completion for "sm" and "xs" because in the type definition you've specified or "string".
+
+**How to fix this -> to not to lose auto-completion**
+
+```js
+type IconSize = "xs" | "sm" | Omit<string, "sm" | "xs">;
+```
+
+Now you will have auto-completion :)
