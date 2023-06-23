@@ -506,3 +506,40 @@ mySearch = function (src: string, subString: string): boolean {
   return result
 }
 ```
+
+
+# Advanced Typescript
+
+
+### When should I use a Generic?
+
+```js
+interface Animal {
+  animalName: string;
+}
+
+interface Human {
+  firstname: string;
+  lastname: string;
+}
+
+const getDisplayName = <T extends Animal | Human>(
+  item: T
+): T extends Animal ? { animalName: string } : { humanName: string } => {
+  if ("animalName" in item) {
+    return {
+      animalName: item.animalName
+    };
+  }
+
+  return {
+    humanName: item.firstname + " " + item.lastname
+  };
+};
+
+const result1 = getDisplayName({
+  firstname: "arghun",
+  lastname: "mousanezhad"
+});
+const result2 = getDisplayName({ animalName: "bird" });
+```
