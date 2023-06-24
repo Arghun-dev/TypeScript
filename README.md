@@ -613,3 +613,29 @@ const sendEvent = <Type extends Event["type"]>(
 sendEvent('login', { userId: '123' });
 sendEvent('logout', {})
 ```
+
+
+
+### noUnCheckedIndexAccess
+
+this is a property in typescript which by default is false, but it's good to change it to true in tsconfig file. 
+
+without it you will not get an error in below example
+
+```js
+const myObj = Record<string, string[]> = {}
+
+myObj.foo.push("hey")
+```
+
+but if you change it to true in tsconfig file you will get error and you need to fix this error like below:
+
+```js
+const myObj: Record<string, string[]> = {};
+
+if (!myObj.foo) {
+  myObj.foo = []
+}
+
+myObj.foo.push("Hey");
+```
