@@ -587,3 +587,29 @@ type IconSize = "xs" | "sm" | Omit<string, "sm" | "xs">;
 ```
 
 Now you will have auto-completion :)
+
+
+### Dynamic function arguments with Generics
+
+in some cased we want some argument or prop to be sent to the function, and in some case we want not to be sent the argument into that function.
+
+exa) we have a function called `sendEvent` that we don't want to be able to send the second arg of payload if the first arg is `logout`, but we do want to send the second arg to that function if the first arg is `login`.
+
+```js
+type Event =
+  | { type: "login"; payload: { userId: string } }
+  | { type: "logout" };
+
+// incorrect
+// const sendEvent = (type: Event["type"], payload?: any) => {};
+
+// correct
+const sendEvent = <Type extends Event["type"]>(
+  ...args: Extract<Event, { type: Type }> extends { payload: infer TPayload }
+    ? [type: Type, payload:TPayload]
+    : [Type]
+) => {};
+
+sendEvent('login', { userId: '123' });
+sendEvent('logout', {})
+```
