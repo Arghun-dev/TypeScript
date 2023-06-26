@@ -639,3 +639,45 @@ if (!myObj.foo) {
 
 myObj.foo.push("Hey");
 ```
+
+
+
+### Discriminated Unions
+
+Discriminated Unions (also known as tagged unions or algebraic data types) are a feature in TypeScript that allows you to create types that can be one of a set of types, but you can still know which one it is and work with it in a type-safe way.
+
+Here's an example of how you might use a discriminated union to model a shape that could be either a circle or a rectangle:
+
+```js
+interface Circle {
+  type: "circle";
+  radius: number;
+}
+
+interface Rectangle {
+  type: "rectangle";
+  width: number;
+  height: number;
+}
+
+type Shape = Circle | Rectangle;
+
+const getArea = (shape: Shape) => {
+  switch(shape.type) {
+    case 'circle':
+      return Math.PI * shape.radius ** 2;
+    case 'rectangle':
+      return shape.width * shape.height;
+  }
+}
+
+const myCircle: Circle = { type: 'circle', radius: 4 };
+const myRectangle: Rectangle = { type: 'rectangle', width: 2, height: 6 };
+
+console.log(getArea(myCircle));
+console.log(getArea(myRectangle));
+```
+
+In this example, Shape is a discriminated union of Circle and Rectangle. Each of these types has a kind property that acts as a discriminant - it's the property that TypeScript uses to distinguish between the types in the union.
+The getArea function takes a Shape and uses a switch statement on the kind property to determine what type of shape it's dealing with. Once inside a case block, TypeScript knows what type the shape is, so it can access the appropriate properties (radius for circles, width and height for rectangles) in a type-safe way.
+This is a powerful feature that allows you to work with different types in a unified, type-safe manner. It's especially useful in scenarios where you have a function that can accept different types of input but needs to behave differently based on what type it receives.
