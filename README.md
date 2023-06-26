@@ -681,3 +681,29 @@ console.log(getArea(myRectangle));
 In this example, Shape is a discriminated union of Circle and Rectangle. Each of these types has a kind property that acts as a discriminant - it's the property that TypeScript uses to distinguish between the types in the union.
 The getArea function takes a Shape and uses a switch statement on the kind property to determine what type of shape it's dealing with. Once inside a case block, TypeScript knows what type the shape is, so it can access the appropriate properties (radius for circles, width and height for rectangles) in a type-safe way.
 This is a powerful feature that allows you to work with different types in a unified, type-safe manner. It's especially useful in scenarios where you have a function that can accept different types of input but needs to behave differently based on what type it receives.
+
+
+
+### Intersection Type
+
+
+Intersection types are a feature in some type systems that allow a programmer to create a type which is the combination of multiple other types. This means that an object of an intersection type is required to satisfy all the types that make up the intersection.
+For example, in TypeScript, an intersection type is created using the `&` operator. Here's an example:
+
+
+```js
+interface HasName {
+    name: string;
+}
+
+interface CanSpeak {
+    speak(): void;
+}
+
+type Person = HasName & CanSpeak;
+
+let person: Person = {
+    name: 'Alice',
+    speak() { console.log('Hello!'); }
+};
+```
