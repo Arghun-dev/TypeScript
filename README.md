@@ -741,3 +741,24 @@ type Check<T> = T extends string ? boolean : number;
 let a: Check<string> = false;
 let b: Check<number> = 45;
 ```
+
+
+
+### Utility Types
+
+TypeScript provides several utility types that make it easier to manipulate and transform types. Here are a few examples:
+
+```js
+type Person = {
+  name: string;
+  age: number;
+};
+
+type PartialPerson = Partial<Person>; // All properties of Person are optional
+
+type ReadonlyPerson = Readonly<Person>; // All properties of Person are read-only
+
+type Merged = Merge<{ a: string }, { b: number }>; // Merges two types
+
+type ExcludeNullUndefined = Exclude<string | null | undefined, null | undefined>; // Excludes null and undefined from a union type
+```
