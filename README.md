@@ -707,3 +707,23 @@ let person: Person = {
     speak() { console.log('Hello!'); }
 };
 ```
+
+
+
+### Type Guards
+
+In TypeScript, type guards are a way to narrow down the type of a variable within a conditional block of code. They allow you to perform runtime checks on the type of a value and enable the TypeScript compiler to infer more specific types, leading to better type safety.
+
+Type guards come in different forms, but the most common ones are:
+
+1. `typeof` type guards: You can use the typeof operator to check the type of a value against a string literal representing a type. For example:
+
+```js
+function printLength(value: string | number) {
+  if (typeof value === "string") {
+    console.log(value.length); // TypeScript knows 'value' is a string
+  } else {
+    console.log("Not a string");
+  }
+}
+```
