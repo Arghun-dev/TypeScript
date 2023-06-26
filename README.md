@@ -727,3 +727,17 @@ function printLength(value: string | number) {
   }
 }
 ```
+
+
+
+
+### Conditional Types
+
+Conditional types enable you to define types based on conditions. Here's an example:
+
+```js
+type Check<T> = T extends string ? boolean : number;
+
+let a: Check<string> = false;
+let b: Check<number> = 45;
+```
