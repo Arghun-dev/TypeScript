@@ -762,3 +762,27 @@ type Merged = Merge<{ a: string }, { b: number }>; // Merges two types
 
 type ExcludeNullUndefined = Exclude<string | null | undefined, null | undefined>; // Excludes null and undefined from a union type
 ```
+
+
+
+### Conditional Types
+
+```js
+interface IsRed {
+  color: "red";
+}
+
+interface IBlue {
+  color: "blue";
+}
+
+type Color<T> = T extends "red" ? IsRed : IBlue;
+
+const color1: Color<"red"> = {
+  color: "red"
+};
+
+const color2: Color<"blue"> = {
+  color: "blue"
+};
+```
