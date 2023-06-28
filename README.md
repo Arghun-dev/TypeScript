@@ -950,3 +950,13 @@ type PartOfWindow = {
  [Key in "document" | "navigator" | "setTimeout"]: Window[Key]
 }
 ```
+
+Let's make this a little bit more generalized through the use of type params. First we should let the caller define which keys they would like to use We'll call this type `PickWindowProperties` because we get to specify which things from `Window` we'd like.
+
+```js
+type PickWindowProperites<Keys extends keyof Window> = {
+  [Key in Keys]: Window[Key]
+} 
+
+type MyType = PickWindowProperites<"document" | "alert">
+```
