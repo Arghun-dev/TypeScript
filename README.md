@@ -1030,3 +1030,13 @@ type Colors = "blue" | "red" | "green" | "yellow";
 
 type ArtMethodNames = `paint${Capitalize<Colors>}${Capitalize<ArtFeatures>}`;
 ```
+
+
+
+### Filtering properties out
+
+Here's an example using `Extract` and a template literal type to filter for only those members of `window.document` that begin with `query`
+
+```js
+type DocKeys = Extract<keyof Document, `query${string}`>
+```
