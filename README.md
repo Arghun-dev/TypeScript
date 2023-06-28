@@ -816,3 +816,15 @@ const colors: CarColor = {
   red: "red"
 };
 ```
+
+You can also reach deeper into the deeper into the object through multiple accesses.
+
+```js
+type RedColor = Car["color"]["red"];
+```
+
+You can also pass or `Union ( | )` type through `Car` as an index, as long as all parts of the union type are each a valid index.
+
+```js
+type CarProp = Car["color" | "year"];
+```
