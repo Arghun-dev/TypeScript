@@ -863,3 +863,78 @@ console.log(myDictionary['apple']); // Output: 5
 console.log(myDictionary['banana']); // Output: 10
 console.log(myDictionary['cherry']); // Output: 7
 ```
+
+
+
+
+### Mapped Types
+
+Mapped types in TypeScript allow you to create new types by transforming properties from an existing type. They provide a way to iterate over the properties of a type and apply transformations, such as making properties optional, readonly, or modifying their types.
+
+Let's start with a simple example of a mapped type that makes all properties of an existing type optional:
+
+```js
+type Person = {
+  name: string;
+  age: number;
+  job: string;
+};
+
+type OptionalPerson = {
+  [K in keyof Person]?: Person[K];
+};
+
+const me: Person = {
+  age: 24,
+  name: "arghun",
+  job: "developer"
+};
+
+const you: OptionalPerson = {
+  age: 23
+};
+```
+
+let's look at a more advanced example of a mapped type that combines two existing types:
+
+We have these two interfaces, We want to both to have an `intersection` type functionality (PersonWithAddressOptional) and also make the properties optional.
+
+```js
+interface Person {
+  name: string;
+  age: number;
+}
+
+interface Address {
+  street: string;
+  city: string;
+}
+```
+
+solution:
+
+```js
+interface Person {
+  name: string;
+  age: number;
+}
+
+interface Address {
+  street: string;
+  city: string;
+}
+
+type PersonWithAddressOptional = Partial<Person> & Partial<Address>;
+
+const x: PersonWithAddressOptional = {};
+```
+
+`Partial` utility type uses Mapped Types behind the scene.
+
+This is the definition of Partial:
+
+```js
+type Partial<T> = {
+    [P in keyof T]?: T[P];
+};
+```
