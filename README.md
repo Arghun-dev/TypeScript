@@ -964,6 +964,10 @@ type MyType = PickWindowProperites<"document" | "alert">
 
 Let's generalize it one step further by aloowing this type to work on anything, not just a `Window`. Because this is no longer a type that exclusively works with `Window`, We'll rename this type to `PickProperties`
 
+
+
+### Pick definition
+
 This is basically the `Pick` utility type of typescript.
 
 ```js
@@ -978,4 +982,13 @@ type Type1 = {
 }
 
 type Type2 = PickProperties<Type1, 'name', 'job'>;
+```
+
+
+### Partial Definition
+
+```js
+type PartialType<Type> = {
+  [Keys in keyof Type]?: Type[Key]
+}
 ```
