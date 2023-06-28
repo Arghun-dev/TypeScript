@@ -786,3 +786,33 @@ const color2: Color<"blue"> = {
   color: "blue"
 };
 ```
+
+
+
+
+### Indexed Access Types
+
+Indexed Access types provided a mechanism for retreiving part(s) of an array or object type via indeces. We'll look at how this kind of types works and a couple of practical examples of where you might use them.
+
+**This kind of types are all about accessing some part of another type, via an index.**
+
+```js
+interface Car {
+  make: string;
+  model: string;
+  year: number;
+  color: {
+    red: string;
+    green: string;
+    blue: string;
+  };
+}
+
+type CarColor = Car["color"];
+
+const colors: CarColor = {
+  blue: "blue",
+  green: "green",
+  red: "red"
+};
+```
