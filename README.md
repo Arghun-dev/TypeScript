@@ -985,10 +985,26 @@ type Type2 = PickProperties<Type1, 'name', 'job'>;
 ```
 
 
-### Partial Definition
+### Partial Definition (make all properties in type optional)
 
 ```js
 type PartialType<Type> = {
   [Keys in keyof Type]?: Type[Key]
+}
+```
+
+### Make all properites required
+
+```js
+type RequiredTypes<Type> = {
+  [Key in keyof Type]-?: Type[Key] 
+}
+```
+
+### Make all properties readonly
+
+```js
+type ReadOnlyTypes<Type> = {
+ readonly [Key in keyof]: Type[Key]
 }
 ```
