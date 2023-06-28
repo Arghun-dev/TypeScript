@@ -1008,3 +1008,25 @@ type ReadOnlyTypes<Type> = {
  readonly [Key in keyof]: Type[Key]
 }
 ```
+
+
+
+### Template literal types
+
+```js
+type ArtFeatures = "cabin" | "tree" | "sunset";
+type Colors = "blue" | "red" | "green" | "yellow";
+
+type ArtMethodNames = `paint_${Colors}_${ArtFeatures}`;
+```
+
+Typescript also provides a few special types you can use within these template literal types
+
+`UpperCase`, `LowerCase`, `Capitalize`, `Uncapitalize`
+
+```js
+type ArtFeatures = "cabin" | "tree" | "sunset";
+type Colors = "blue" | "red" | "green" | "yellow";
+
+type ArtMethodNames = `paint${Capitalize<Colors>}${Capitalize<ArtFeatures>}`;
+```
