@@ -828,3 +828,38 @@ You can also pass or `Union ( | )` type through `Car` as an index, as long as al
 ```js
 type CarProp = Car["color" | "year"];
 ```
+
+
+
+
+### Index Signature
+
+In TypeScript, an index signature allows you to define a type for accessing properties of an object using index notation, similar to how you access elements in an array. It provides a way to specify the type of values that can be used as keys to access properties and the corresponding value types for those properties.
+
+The syntax for an index signature is as follows:
+
+```js
+{
+  [index: Type]: ValueType;
+}
+```
+
+Here, [index: Type] represents the index parameter, which defines the type of the keys used to access properties, and ValueType represents the type of the corresponding property values.
+
+Let's consider an example to understand it better:
+
+```js
+interface Dictionary {
+  [key: string]: number;
+}
+
+const myDictionary: Dictionary = {
+  apple: 5,
+  banana: 10,
+  cherry: 7,
+};
+
+console.log(myDictionary['apple']); // Output: 5
+console.log(myDictionary['banana']); // Output: 10
+console.log(myDictionary['cherry']); // Output: 7
+```
