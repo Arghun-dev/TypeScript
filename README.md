@@ -938,3 +938,15 @@ type Partial<T> = {
     [P in keyof T]?: T[P];
 };
 ```
+
+
+
+### Advanced Mapped Type
+
+Mapped Types work beautifully with indexed access types, because the index can be used when defining the value type.
+
+```js
+type PartOfWindow = {
+ [Key in "document" | "navigator" | "setTimeout"]: Window[Key]
+}
+```
