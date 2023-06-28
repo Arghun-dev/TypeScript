@@ -960,3 +960,22 @@ type PickWindowProperites<Keys extends keyof Window> = {
 
 type MyType = PickWindowProperites<"document" | "alert">
 ```
+
+
+Let's generalize it one step further by aloowing this type to work on anything, not just a `Window`. Because this is no longer a type that exclusively works with `Window`, We'll rename this type to `PickProperties`
+
+This is basically the `Pick` utility type of typescript.
+
+```js
+type PickProperties<Type, Keys extends keyof Type> = {
+  [Key in Keys]: Type[Key]
+}
+
+type Type1 = {
+  name: string;
+  age: number;
+  job: 'develper'
+}
+
+type Type2 = PickProperties<Type1, 'name', 'job'>;
+```
