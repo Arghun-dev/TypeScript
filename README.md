@@ -1187,3 +1187,31 @@ type Excluded = Exclude<MyUnion, Person>;
 ```
 
 So basically `Exclude` is complete opposite of `Extract`
+
+
+
+### Conditional Types
+
+Conditional types allow for types to be expressed using a very similar (basically, the same) syntax
+
+```js
+interface Employee {
+    company: string;
+}
+
+interface School {
+    school: string;
+}
+
+type Building<T> = T extends "employee" ? Employee : T extends "school" ? School : never;
+
+const myBuilding: Building<"employee"> = {
+    company: 'Utopia Music'
+}
+
+const yourBuilding: Building<"school"> = {
+    school: "Behrooz"
+}
+
+const hisBuilding: Building<"nothing"> = {}
+```
