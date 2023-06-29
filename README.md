@@ -1032,11 +1032,62 @@ type ArtMethodNames = `paint${Capitalize<Colors>}${Capitalize<ArtFeatures>}`;
 ```
 
 
+### Extract utility type
 
-### Filtering properties out
+This is the definition of `Extract` type. 
+
+```js
+type Extract<T, U> = T extends U ? T : never;
+```
+
+Here, T represents the union type from which we want to extract the types, and U represents the condition or subset of types we want to extract.
+
+Let's consider an example to better understand how Extract works:
+
+```js
+type MuUnion = "apple" | "banana" | "orange" | 123 | true;
+
+type StringUnion = Extract<MyUnion, string>;
+```
+
+The Extract utility type filters out the types from MyUnion that are assignable to the string type. In this case, "apple", "banana", and "orange" are the string literals, so they are included in the Extracted type.
+
+**Filtering properties out**
 
 Here's an example using `Extract` and a template literal type to filter for only those members of `window.document` that begin with `query`
 
 ```js
 type DocKeys = Extract<keyof Document, `query${string}`>
 ```
+
+
+**Extracting Subtypes**
+
+```js
+interface Person {
+    name: string;
+    age: number;
+}
+
+interface Employee extends Person {
+    company: string;
+}
+
+interface Student extends Person {
+    school: string;
+}
+
+type MyUnion = Employee | Student | boolean | number;
+
+type Extreacted = Extract<MyUnion, Person>;
+```
+
+In this example, we have a union type MyUnion that includes interface types, a boolean type, and a number type. We want to extract only the subtypes of the Person interface from MyUnion. After applying the Extract utility type, the resulting Extracted type will be:
+
+```js
+type Extracted = Employee | Student;
+```
+
+The Extracted type includes the `Employee` and `Student` interface types, which are subtypes of `Person`, from the original union type.
+
+These examples demonstrate how the Extract utility type can be used to extract specific subsets of types from a union type based on conditional checks, allowing you to work with more refined types in TypeScript.
