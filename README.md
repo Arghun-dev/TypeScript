@@ -1328,3 +1328,33 @@ class Person {
 
 type PersonInstance = InstanceType<typeof Person>;  // Resulting type: Person
 ```
+
+
+
+### Mapped Types and as clauses Setters and Getters Store
+
+```js
+type Setters<State> = {
+    [K in keyof State & string as `set${Capitalize<K>}`]: (value: State[K]) => void;
+}
+
+type Getters<State> = {
+    [K in keyof State & string as `get${Capitalize<K>}`]: () => State[K];
+}
+
+type Store<State> = Setters<State> & Getters<State>;
+
+type PersonState = {
+    name: string;
+    age: number;
+}
+
+type PersonStore = Store<PersonState>;
+
+declare const personStore: PersonStore;
+
+personStore.setAge(123);
+personStore.setName('arghun');
+personStore.getAge();
+personStore.getName();
+```
