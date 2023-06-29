@@ -1075,6 +1075,13 @@ type Colors = "blue" | "red" | "green" | "yellow";
 type ArtMethodNames = `paint${Capitalize<Colors>}${Capitalize<ArtFeatures>}`;
 ```
 
+for example I want to have a string type which the string should start with `Example: `
+
+```js
+type StartWithExample = `Example: ${string}`
+
+const str: StartWithExample = 'Example: asds'
+```
 
 ### Extract utility type
 
