@@ -1083,6 +1083,34 @@ type StartWithExample = `Example: ${string}`
 const str: StartWithExample = 'Example: asds'
 ```
 
+Another good example:
+
+```js
+type CSSValue = number | `${number}px` | `${number}em` | `${number}rem`;
+
+const fontSize = (size: CSSValue) => {
+    return typeof size === 'number' ? `${size}px` : size;
+}
+
+fontSize('123px');
+fontSize(123);
+fontSize('123em');
+fontSize('123rem');
+```
+
+Another good example:
+
+```js
+type Size = 'small' | 'medium' | 'large';
+type Color = 'red' | 'green' | 'yellow';
+
+type Style = `${Size}-${Color}`;
+
+function applyStyle(style: Style) {
+    console.log(style)
+}
+```
+
 ### Extract utility type
 
 This is the definition of `Extract` type. 
