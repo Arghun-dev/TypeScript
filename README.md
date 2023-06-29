@@ -1091,3 +1091,55 @@ type Extracted = Employee | Student;
 The Extracted type includes the `Employee` and `Student` interface types, which are subtypes of `Person`, from the original union type.
 
 These examples demonstrate how the Extract utility type can be used to extract specific subsets of types from a union type based on conditional checks, allowing you to work with more refined types in TypeScript.
+
+
+
+### Exclude (Opposite of Extract)
+
+TypeScript's Exclude utility type is used to exclude specific types from a union type. It creates a new type that contains all the types from the original union type except those that satisfy a given condition.
+
+The syntax for Exclude is as follows:
+
+```js
+type Exclude<T, U> = T extends U ? never : T;
+```
+
+Here, `T represents the union type from which we want to exclude` types, and `U represents the condition or types we want to exclude`.
+
+Let's consider an example to understand how Exclude works:
+
+```js
+type MyUnion = "apple" | "banana" | "orange" | 123 | true;
+
+type Excluded = Exclude<MyUnion, string>;
+```
+
+Expected type would be
+
+```js
+Expected =  "apple" | "banana" | "orange"
+```
+
+
+**Excluding Subtypes**
+
+```js
+interface Person {
+  name: string;
+  age: number;
+}
+
+interface Employee extends Person {
+  company: string;
+}
+
+interface Student extends Person {
+  school: string;
+}
+
+type MyUnion = Employee | Student | boolean | number;
+
+type Excluded = Exclude<MyUnion, Person>;
+```
+
+So basically `Exclude` is complete opposite of `Extract`
