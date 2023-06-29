@@ -1,6 +1,6 @@
 # TypeScript
 
-`$. https://www.typescript-training.com/course/intermediate-v1`
+[Documentation](https://www.typescript-training.com/course/intermediate-v1)
 
 
 ## Typescript key features
