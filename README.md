@@ -1215,3 +1215,81 @@ const yourBuilding: Building<"school"> = {
 
 const hisBuilding: Building<"nothing"> = {}
 ```
+
+
+So, four important utility type -> `Pick`, `Omit`, `Extract`, `Exclude`
+
+1. Pick<T, U> -> If you want to **extract** a property of an object type -> `Pick<Person, "name">`
+
+2. Omit<T, U> -> If you want to **exclude** a property of an object type -> `Omit<Person, "name">`
+
+3. Extract<T, U> -> If you want to pick or extract a specific type from a Union type -> `Extract<Fruit, 'apple'>`
+
+4. Exclude<T, U> -> If you want to exclude or delete a specific type from a Union type -> `Exclude<Fruit, 'banana'>`
+
+5. Partial<T> -> make all property of the object type optional (It uses Mapped Type - Generic - Indexed Access type - type queries)
+
+```js
+interface Person {
+    name: string;
+    age: number;
+    job: string;
+}
+
+type MyPartial<T> = {
+    [Key in keyof T]?: T[Key];
+}
+
+type OptionalPerson = MyPartial<Person>;
+```
+
+6. Required<T> -> opposite of Partial :)
+7. Readonly<T> -> make all properties of the object type readonly
+
+```js
+interface Person {
+    name: string;
+    age: number;
+    job: string;
+}
+
+type MyReadOnly<T> = {
+    readonly [Key in keyof T]: T[Key];
+}
+
+type ReadOnlyPerson = MyReadOnly<Person>;
+```
+
+8. Record<K, T> -> Creates an object type with keys of type K and values of type T. It is often used to define dictionary-like objects.
+
+9. NonNullable<T> ->  This utility type creates a new type by excluding null and undefined from the given type T. It ensures that the resulting type is non-nullable.
+
+```js
+type NullableValue = string | null | undefined;
+type NonNullableValue = NonNullable<NullableValue>;  // Resulting type: string
+```
+
+10. ReturnType<T> -> This utility type extracts the return type from a function type T.
+
+```js
+type MyFunction = () => number;
+type ReturnValueType = ReturnType<MyFunction>;  // Resulting type: number
+```
+
+11. Parameters<T> -> This utility type retrieves the parameter types from a function type T and represents them as a tuple.
+
+```js
+type MyFunction = (name: string, age: number) => void;
+type FunctionParameters = Parameters<MyFunction>;  // Resulting type: [string, number]
+```
+
+12. InstanceType<T> -> This utility type extracts the instance type from a constructor function type T.
+
+```js
+class Person {
+  name: string;
+  age: number;
+}
+
+type PersonInstance = InstanceType<typeof Person>;  // Resulting type: Person
+```
