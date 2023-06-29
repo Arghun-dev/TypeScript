@@ -1,5 +1,47 @@
 # TypeScript
 
+
+## Typescript key features
+
+`Static Typing`: TypeScript introduces static typing, which allows you to explicitly declare the types of variables, function parameters, and return values. This enables catching type-related errors during development and provides better tooling support such as code completion and refactoring.
+
+Example:
+
+```js
+let name: string = "John";
+let age: number = 25;
+let isStudent: boolean = true;
+
+function greet(person: string): string {
+  return "Hello, " + person;
+}
+```
+
+
+`Type Inference`: TypeScript infers types based on the assigned values, even if you don't explicitly annotate them. It analyzes your code and tries to infer the most appropriate types, reducing the need for explicit type annotations.
+
+Example:
+```js
+let name = "John"; // TypeScript infers the type as string
+let age = 25; // TypeScript infers the type as number
+```
+
+
+`Interface and Type System`: TypeScript introduces interfaces and types that allow you to define custom types and enforce contracts between different parts of your code. Interfaces define the shape of objects, while types can represent various types, including primitive types, unions, intersections, and more.
+
+Example:
+```js
+interface Person {
+  name: string;
+  age: number;
+}
+
+type Point = {
+  x: number;
+  y: number;
+};
+```
+
 ## Benefits
 
 1. Strong Typing
