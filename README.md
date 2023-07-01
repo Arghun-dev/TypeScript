@@ -1378,3 +1378,20 @@ personStore.setName('arghun');
 personStore.getAge();
 personStore.getName();
 ```
+
+
+
+### Recursive Type
+
+The types that it refers to itself is called recursive type. Look at the below example
+
+```js
+type JSONValue = string | number | boolean | null | JSONValue[] | { [k: string]: JSONValue };
+
+const json: JSONValue = {
+    name: 'arghun',
+    address: {
+        street: 'Any streen name'
+    }
+}
+```
