@@ -1395,3 +1395,10 @@ const json: JSONValue = {
     }
 }
 ```
+
+
+
+
+### //@ts-expect-error
+
+Always use `@//ts-expect-error` instead of `//@ts-ignore`.
