@@ -243,13 +243,25 @@ Type 'number' is not assignable to type 'string'.
 Type 'string' is not assignable to type 'number'.
 ```
 
-exa.
+exa. You can use spread operatoe in tuples
 
 ```js
 type Foo<T extends any[]> = [boolean, ...T, boolean];
 
 const foo: Foo<[number, string]> = [true, 123, 'arghun', false];
 ```
+
+exa. Look at the example below
+
+<img width="764" alt="Screenshot 2023-07-01 at 12 59 09" src="https://github.com/Arghun-dev/TypeScript/assets/53907570/1ac8c370-3ea9-4c3a-9b2e-9c50f6f1ca6e">
+
+in the example you saw, the problem is whenever you wanna use printAddress function the auto-completion just show the `arg_0`, `arg_1`, ...
+
+It's not so useful. To solve this issue you can give specific name for each member of the tuple like below.
+
+<img width="812" alt="Screenshot 2023-07-01 at 13 02 48" src="https://github.com/Arghun-dev/TypeScript/assets/53907570/612ccbce-78fd-413c-a9dd-9f59cc888561">
+
+As you see, it's much nicer now.
 
 When accessing an element with a known index, the correct type is retrieved:
 
