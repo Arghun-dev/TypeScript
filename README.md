@@ -1420,3 +1420,16 @@ try {
  console.log(err.stack);
 }
 ```
+
+
+
+
+### Declaration files and type only imports
+
+1. First add "checkJs": true in tsconfig file and then if you want to import something like this:
+
+```js
+import type { }  from '';
+```
+
+you can only type and use, if you try to import something other than type (value) you will get an error when trying to use that imported function.
