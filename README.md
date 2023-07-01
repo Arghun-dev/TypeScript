@@ -1402,3 +1402,21 @@ const json: JSONValue = {
 ### //@ts-expect-error
 
 Always use `@//ts-expect-error` instead of `//@ts-ignore`.
+
+
+
+
+### Error handling with unknown
+
+```js
+function assertIsError(err: any): asserts err is Error {
+  if (!(err instanceof Error)) throw new Error (`Not an error ${err}`)
+}
+
+try {
+ // do something
+} catch (err: unknown) {
+ assertIsError(err);
+ console.log(err.stack);
+}
+```
