@@ -243,6 +243,14 @@ Type 'number' is not assignable to type 'string'.
 Type 'string' is not assignable to type 'number'.
 ```
 
+exa.
+
+```js
+type Foo<T extends any[]> = [boolean, ...T, boolean];
+
+const foo: Foo<[number, string]> = [true, 123, 'arghun', false];
+```
+
 When accessing an element with a known index, the correct type is retrieved:
 
 ```js
