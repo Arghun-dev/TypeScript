@@ -1433,3 +1433,41 @@ import type { }  from '';
 ```
 
 you can only type and use, if you try to import something other than type (value) you will get an error when trying to use that imported function.
+
+
+
+
+## Conditional Props in Typescript (super awesome and useful)
+
+imagine we have a child component which has a gender prop. And if we pass `male` to it, we're expecting have `salary` prop as a mandatory prop. And if we pass `female` prop we're expecting to have `weight` as a mandatory prop.
+
+Let's look at the example below:
+
+```js
+type Props = {
+  name: string;
+} & (MaleProps | FemaleProps)
+
+type MaleProps = {
+  gender: 'male',
+  salary: number
+}
+
+type FemaleProps = {
+  gender: 'female',
+  weight: number
+}
+
+const Child = (props: Props) => {
+  // this is called type guard
+  if (props.gender === 'female') {
+    console.log(props.weight);
+  } else if (props.gender === 'male') {
+    console.log(props.salary)
+  }
+
+  return <div>Child</div>
+}
+```
+
+**This is amazing right :)! How did I not know**
