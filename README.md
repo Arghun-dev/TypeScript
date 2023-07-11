@@ -1471,3 +1471,23 @@ const Child = (props: Props) => {
 ```
 
 **This is amazing right :)! How did I not know**
+
+More real case scenario:
+
+```js
+type ApiResponse<T> =
+  | { statuse: 'success', data: T, timestamp: Date }
+  | { statue: 'error', message: string, timestamp: Date }
+
+let response1: ApiResponse<number> = {
+  status: 'success',
+  data: 100,
+  timestamp: new Date()
+}
+
+let response2: ApiResponse<number> = {
+  status: 'error',
+  message: 'something went wrong',
+  timestamp: new Date()
+}
+```
